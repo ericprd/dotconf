@@ -10,7 +10,10 @@ return {
 		local cmp = require("cmp")
 		cmp.setup({
 			mapping = {
-				['<Tab>'] = cmp.mapping.confirm({ select = true })
+                ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+                ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+                ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+                ['<CR>'] = cmp.mapping.confirm({ select = false }),
 			},
 			sources = {
 				{ name = "nvim_lsp" },
