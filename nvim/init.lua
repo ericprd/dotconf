@@ -14,4 +14,34 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end
 })
 
+-- Disable barbar when in Alpha dashboard
+vim.api.nvim_create_autocmd("User", {
+  pattern = "AlphaReady",
+  callback = function()
+    vim.opt.showtabline = 0
+  end,
+})
+
+-- Show tabline again when opening a real file or directory
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+  callback = function()
+    -- Only show if not a dashboard
+    if vim.bo.filetype ~= "alpha" then
+      vim.opt.showtabline = 2
+    end
+  end,
+})
+
+-- Auto-close netrw after opening a file
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function(args)
+    local buf = args.buf
+    local name = vim.api.nvim_buf_get_name(buf)
+    if name == "" or vim.fn.isdirectory(name) == 1 then
+      vim.bo[buf].buflisted = false
+    end
+  end,
+})
+
+
 

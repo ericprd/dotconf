@@ -6,34 +6,28 @@ return {
 
     -- Set header
     dashboard.section.header.val = {
-      "      Neovim Dashboard",
-      "",
-      "Go Developer IDE",
-      "",
+        " _____                                  _          _____            _     ",
+        "/  ___|                                (_)        |_   _|          | |    ",
+        "\\ `--.  _   _  _ __    ___  _ __  __ _  _  ____ ___ | |  ___   ___ | |__  ",
+        " `--. \\| | | || '_ \\  / _ \\| '__|/ _` || ||_  // _ \\| | / _ \\ / __|| '_ \\ ",
+        "/\\__/ /| |_| || | | ||  __/| |  | (_| || | / /|  __/| ||  __/| (__ | | | |",
+        "\\____/  \\__, ||_| |_| \\___||_|   \\__, ||_|/___|\\___|\\_/ \\___| \\___||_| |_|",
+        "         __/ |                    __/ |                                   ",
+        "        |___/                    |___/                                    ",
     }
 
     -- Set menus
     dashboard.section.buttons.val = {
-      dashboard.button("e", "  New File", "<Cmd>enew<CR>"),
-      dashboard.button("f", "  Find File", "<Cmd>Telescope find_files<CR>"),
-      dashboard.button("r", "  Recent File", "<Cmd>Telescope oldfiles<CR>"),
-      dashboard.button("q", "雷  Quit", "<Cmd>quit<CR>"),
+        dashboard.button("f", "󰈞  Find File", ":Telescope find_files<CR>"),
+        dashboard.button("r", "󰈢  Recent Files", ":Telescope oldfiles<CR>"),
+        dashboard.button("g", "󰱼  Grep Text", ":Telescope live_grep<CR>"),
+        dashboard.button("l", "󰱼  Plugins", ":Lazy<CR>"),
+        dashboard.button("u", "  Update Plugins", ":Lazy update<CR>"),
+        dashboard.button("q", "󰗼  Quit", ":qa<CR>"),
     }
 
     alpha.setup(dashboard.config)
 
-    -- Auto-open Dashboard when starting with directory
---    vim.api.nvim_create_autocmd("VimEnter", {
-  --    callback = function()
-    --    if #vim.fn.argv() == 1 and vim.fn.isdirectory(vim.fn.argv()[1]) == 1 then
-            -- If we opened with a directory
-      --      vim.cmd("cd " .. vim.fn.argv()[1])  -- Change directory first
-        --    vim.cmd("enew")  -- Open a new buffer
-          --  require("alpha").start(true)
-      --  end
-    --  end,
-    --  desc = "Open Dashboard instead of directory picker.",
---   })
   end,
 }
 
