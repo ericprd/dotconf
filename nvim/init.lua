@@ -10,6 +10,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
       -- Clear args so alpha shows
       vim.cmd("silent! args")
       require("alpha").start()
+ --     require("alpha").setup(require("alpha.themes.dashboard").config)
     end
   end
 })
